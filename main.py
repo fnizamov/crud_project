@@ -31,6 +31,9 @@ db = {
 
 
 def create():
+    """
+    This function create new product in DataBase
+    """
     id_ = datetime.now().strftime('%H%M%S')
     title = input('  --->  Введите название товара: ')
     price = int(input('  --->  Введите стоимость товара: '))
@@ -46,6 +49,9 @@ def create():
     print(f'  --->  Товар {title} ({id_}) успешно добавлен!')
 
 def delete_data():
+    """
+    This function removes any product by ID from the DataBase
+    """
     with shelve.open(FILENAME) as db:
         print("""
           --->  Список доступных ID для удаления:""", list(db.keys()))
@@ -58,6 +64,9 @@ def delete_data():
             print(f'  --->  Указанный ID ({id_}) не существует')
 
 def clear_data():
+    """
+    This function completely clears the DataBase
+    """
     with shelve.open(FILENAME) as db:
         db.clear()
         print('-------------------------------------------------------------------------------')
@@ -65,6 +74,9 @@ def clear_data():
         print('-------------------------------------------------------------------------------')
 
 def get_all_data():
+    """
+    This function prints a summary of all products in the DataBase.
+    """
     with shelve.open(FILENAME) as db:
         for key, value in db.items():
             print('-------------------------------------------------------------------------------')
@@ -72,6 +84,9 @@ def get_all_data():
             print('-------------------------------------------------------------------------------')
 
 def retrieve_prod():
+    """
+    This function prints full description of the product for the given ID.
+    """
     with shelve.open(FILENAME) as db:
         print("""
           --->  Список доступных ID:""", list(db.keys()))
@@ -83,6 +98,9 @@ def retrieve_prod():
                 print('-------------------------------------------------------------------------------')
 
 def update_data():
+    """
+    This function updates the data in the DataBase by ID.
+    """
     with shelve.open(FILENAME, writeback=True) as db:
         print("""
           --->  Список доступных ID:""", list(db.keys()))

@@ -1,0 +1,1 @@
+FILENAME = '/home/fnizamov/Makers/makers_lectures/crud_project/db/shop_db'
